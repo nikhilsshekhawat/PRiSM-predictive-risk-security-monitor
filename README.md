@@ -368,5 +368,3 @@ python benchmarks/memory_test.py --batch-size 8
 ```
 
 ⭐ **Star this repository** if you find it helpful!
-
-For questions or support, please open an issue or contact our team.
