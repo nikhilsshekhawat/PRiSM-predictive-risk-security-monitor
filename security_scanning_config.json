@@ -1,0 +1,83 @@
+{
+  "project": {
+    "name": "security_scanning_ai",
+    "version": "1.0.0",
+    "description": "Pre-trained AI system for detecting explosives, ammunition, and harmful objects"
+  },
+  "data": {
+    "dataset_path": "./data/",
+    "train_split": 0.8,
+    "val_split": 0.15,
+    "test_split": 0.05,
+    "image_size": [
+      640,
+      640
+    ],
+    "batch_size": 16,
+    "num_workers": 4,
+    "augmentation": true
+  },
+  "models": {
+    "primary": "yolov8",
+    "architectures": [
+      "yolov8n",
+      "yolov8s",
+      "yolov8m",
+      "yolov8l"
+    ],
+    "pretrained": true,
+    "num_classes": 12,
+    "ensemble": true
+  },
+  "training": {
+    "epochs": 200,
+    "learning_rate": 0.001,
+    "optimizer": "AdamW",
+    "scheduler": "CosineAnnealingLR",
+    "weight_decay": 0.0005,
+    "early_stopping": true,
+    "patience": 20,
+    "save_best": true
+  },
+  "hyperparameter_tuning": {
+    "method": "bayesian",
+    "n_trials": 100,
+    "parameters": {
+      "learning_rate": [
+        0.0001,
+        0.01
+      ],
+      "batch_size": [
+        8,
+        16,
+        32
+      ],
+      "weight_decay": [
+        0.0001,
+        0.001
+      ],
+      "dropout": [
+        0.1,
+        0.5
+      ]
+    }
+  },
+  "evaluation": {
+    "metrics": [
+      "mAP",
+      "mAP@50",
+      "mAP@75",
+      "precision",
+      "recall",
+      "F1"
+    ],
+    "confidence_threshold": 0.25,
+    "iou_threshold": 0.45
+  },
+  "inference": {
+    "device": "cuda",
+    "max_det": 300,
+    "conf_threshold": 0.25,
+    "iou_threshold": 0.45
+  }
+}
