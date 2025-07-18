@@ -367,49 +367,6 @@ python benchmarks/speed_test.py --model yolov8s --device cuda
 python benchmarks/memory_test.py --batch-size 8
 ```
 
-## 🤝 Contributing
-
-We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) before submitting pull requests.
-
-### Development Setup
-
-```bash
-# Install development dependencies
-pip install -r requirements-dev.txt
-
-# Install pre-commit hooks
-pre-commit install
-
-# Run code formatting
-black security_scanning/
-isort security_scanning/
-flake8 security_scanning/
-```
-
-### Reporting Issues
-
-- **Security vulnerabilities**: Email security@yourproject.com
-- **Bugs**: Create an issue with detailed reproduction steps
-- **Feature requests**: Open a discussion in our GitHub Discussions
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Ultralytics**: For the excellent YOLOv8 implementation
-- **Dataset Authors**: SIXray, PIDray, HOD, DvXray, HiXray, OPIXray contributors
-- **Security Research Community**: For valuable feedback and testing
-
-## 📞 Support
-
-- **Documentation**: [Full documentation](https://your-docs-site.com)
-- **Community Forum**: [GitHub Discussions](https://github.com/your-username/security-scanning-ai/discussions)
-- **Email Support**: support@yourproject.com
-
----
-
 ⭐ **Star this repository** if you find it helpful!
 
 For questions or support, please open an issue or contact our team.
