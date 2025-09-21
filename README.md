@@ -1,4 +1,4 @@
-# Security Scanning AI for Harmful Object Detection
+# PRiSM — Predictive Risk & Security Monitor
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -14,7 +14,7 @@ Modern security checkpoints require an automated, real-time threat detection sys
 ### Key Features
 
 - **🎯 Multi-Dataset Training**: Curated dataset loader supporting 6 major X-ray security datasets
-- **🧠 Advanced Models**: YOLOv8-Security backbone with optional Faster R-CNN ensemble
+- **🧠 Advanced Models**: YOLOv8- backbone with optional Faster R-CNN ensemble
 - **⚙️ Automated Tuning**: Bayesian hyperparameter optimization with Ray Tune integration
 - **📊 Real-time Detection**: Support for live video streams, X-ray feeds, and batch processing
 - **🔒 Security-First**: Built with threat scoring and compliance reporting
@@ -45,29 +45,7 @@ Modern security checkpoints require an automated, real-time threat detection sys
 ### Environment Setup
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/security-scanning-ai.git
-cd security-scanning-ai
 
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Download pre-trained models
-python scripts/download_models.py
-```
-
-### Docker Installation (Recommended for Production)
-
-```bash
-# Build Docker image
-docker build -t security-scanning-ai .
-
-# Run with GPU support
-docker run --gpus all -p 8080:8080 security-scanning-ai
 ```
 
 ## ⚡ Quick Start
@@ -91,17 +69,7 @@ print(f"Threats detected: {results['threat_level']}")
 ### Command Line Interface
 
 ```bash
-# Train model
-python main.py --mode train --model yolov8 --epochs 100
 
-# Run inference on single image
-python main.py --mode infer --source image.jpg --weights runs/best.pt
-
-# Real-time detection from webcam
-python main.py --mode infer --source 0 --weights runs/best.pt
-
-# Hyperparameter tuning
-python main.py --mode tune --method bayesian --trials 50
 ```
 
 ## 📊 Dataset Information
@@ -120,11 +88,7 @@ Our training pipeline supports six major X-ray security datasets, totaling over 
 ### Dataset Preparation
 
 ```bash
-# Download and prepare datasets
-python scripts/prepare_datasets.py --datasets sixray pidray hod
 
-# Generate COCO format annotations
-python scripts/convert_to_coco.py --input data/raw --output data/processed
 ```
 
 ## 🏗️ Model Architecture
@@ -141,21 +105,7 @@ Our custom YOLOv8-Security model includes several security-specific adaptations:
 ### Model Configurations
 
 ```yaml
-# Example configuration (configs/yolov8_security.yaml)
-model:
-  architecture: "yolov8n"
-  num_classes: 12
-  input_size: 640
-  
-training:
-  epochs: 200
-  batch_size: 16
-  learning_rate: 0.001
-  
-augmentation:
-  mixup: 0.1
-  cutmix: 0.1
-  mosaic: 0.9
+
 ```
 
 ## 🎯 Training & Evaluation
@@ -178,16 +128,7 @@ augmentation:
 ### Training Script
 
 ```bash
-# Basic training
-python train.py --config configs/yolov8_security.yaml
 
-# Advanced training with validation
-python train.py \
-  --config configs/yolov8_security.yaml \
-  --data data/security_dataset.yaml \
-  --epochs 200 \
-  --batch-size 16 \
-  --device 0
 ```
 
 ## ⚙️ Hyperparameter Tuning
@@ -197,15 +138,7 @@ python train.py \
 We use Optuna and Ray Tune for efficient hyperparameter optimization:
 
 ```python
-from security_scanning.tuning import BayesianTuner
 
-tuner = BayesianTuner(
-    config_path="configs/tuning_config.yaml",
-    n_trials=100,
-    optimization_metric="mAP@50-95"
-)
-
-best_params = tuner.optimize()
 ```
 
 ### Search Space
