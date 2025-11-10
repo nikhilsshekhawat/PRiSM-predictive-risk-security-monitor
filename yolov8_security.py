@@ -360,3 +360,4 @@ def create_yolov8_security_model(config: Dict) -> YOLOv8Security:
         YOLOv8Security model instance
     """
     return YOLOv8Security(config)
+
